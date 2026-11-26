@@ -1,46 +1,62 @@
-# Getting Started with Create React App
+# Share Places
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A social app for sharing places: sign up with a profile picture, add places with a photo, address and description, see each place on a map, and browse other users' places. Built with **React 18, TypeScript and Redux Toolkit (RTK Query)**, backed by a Node/Express/MongoDB API.
 
-## Available Scripts
+**Live demo:** _coming soon_ · You can browse users and their places without an account. Sign up to add your own.
+**Back end:** [Abdel-Fadeel/Share-Places-API](https://github.com/Abdel-Fadeel/Share-Places-API)
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- **Auth.** Sign up with an image upload and log in. The JWT is kept in `localStorage` with auto-logout when it expires, and a custom `useAuth` hook plus context share it.
+- **Users page** showing every user with their avatar and place count.
+- **Places per user,** with an image, address and description, and a **map view** (React Leaflet / OpenStreetMap) in a modal.
+- **Add, edit and delete places.** Only the owner can edit or delete, and delete asks for confirmation.
+- **Data fetching and caching** with RTK Query (`usersApi`, `placesApi`), including automatic cache invalidation after mutations.
+- **Reusable UI kit:** custom form inputs with validation, image upload with preview, modal, backdrop, side drawer, spinner and error modal.
+- **Protected routes** that change with the auth state.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## Tech stack
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+| | |
+|---|---|
+| UI | React 18, CSS Modules |
+| Language | TypeScript |
+| State and data | Redux Toolkit + RTK Query, React Context |
+| Routing | React Router 6 |
+| Maps | Leaflet + React Leaflet |
+| HTTP | RTK Query `fetchBaseQuery`, Axios |
+| Tooling | Create React App, env-cmd |
+| Hosting | Vercel (front end), Render (API), MongoDB Atlas |
 
-### `npm test`
+## Getting started
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Run the [API](https://github.com/Abdel-Fadeel/Share-Places-API) on port 5000 first, then:
 
-### `npm run build`
+```bash
+git clone https://github.com/Abdel-Fadeel/Share-Places.git
+cd Share-Places
+npm install
+npm start
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Then open http://localhost:3000. `.env.development` points `REACT_APP_BASE_URL` to `http://localhost:5000/api/v1`, and `.env.production` points it to the deployed API.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+| Command | What it does |
+|---|---|
+| `npm start` | Start the dev server with `.env.development` |
+| `npm run build` | Production build (uses `.env.production`) |
+| `npm test` | Run tests |
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Project structure
 
-### `npm run eject`
+```
+src/
+├── users/        # Users list, Auth page
+├── places/       # UserPlaces, NewPlace, UpdatePlace, PlaceItem, Map
+├── shared/       # UI kit (FormElements, UIElements, Navigation), auth context, hooks, validators
+└── store/        # Redux store + RTK Query APIs (usersApi, placesApi)
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Author
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+**Abdel-Fadeel Hamdy**, Front-End Engineer · [GitHub](https://github.com/Abdel-Fadeel)
