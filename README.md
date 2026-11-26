@@ -2,7 +2,7 @@
 
 A social app for sharing places: sign up with a profile picture, add places with a photo, address and description, see each place on a map, and browse other users' places. Built with **React 18, TypeScript and Redux Toolkit (RTK Query)**, backed by a Node/Express/MongoDB API.
 
-**Live demo:** _coming soon_ · You can browse users and their places without an account. Sign up to add your own.
+**Live demo:** [share-places-eta.vercel.app](https://share-places-eta.vercel.app) · You can browse users and their places without an account. Sign up to add your own.
 **Back end:** [Abdel-Fadeel/Share-Places-API](https://github.com/Abdel-Fadeel/Share-Places-API)
 
 ## Features
